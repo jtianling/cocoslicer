@@ -1,6 +1,6 @@
 # Cocoslicer
 
-TODO: Write a gem description
+Slicer the packed cocos2d resources(with tool TexturePacker) into the original ones. Don't support zwoptex now."escription
 
 ## Installation
 
@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+cocoslicer packed.plist
 
 ## Contributing
 

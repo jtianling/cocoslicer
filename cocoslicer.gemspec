@@ -8,12 +8,14 @@ Gem::Specification.new do |gem|
   gem.version       = Cocoslicer::VERSION
   gem.authors       = ["jtianling"]
   gem.email         = ["jtianling@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Slicer the packed cocos2d resources(with tool TexturePacker) into the original ones. Don't support zwoptex now.}
+  gem.summary       = %q{Slicer the packed cocos2d resources into the original ones.}
+  gem.homepage      = "http://www.jtianling.com"
 
   gem.files         = `git ls-files`.split($/)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.executables   = ["cocoslicer"]
   gem.require_paths = ["lib"]
+  gem.required_ruby_version = '>= 1.8.6'
+  gem.requirements << 'libmagick, v6.0'
+  gem.requirements << 'plist'
 end
