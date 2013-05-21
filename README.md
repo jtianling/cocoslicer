@@ -1,8 +1,11 @@
 # Cocoslicer
 
-Slicer the packed cocos2d resources(with tool TexturePacker) into the original ones. Don't support zwoptex now."escription
+Slicer the packed cocos2d resources(with tool TexturePacker) into the original ones. Can't slice the files zwoptex packed."
 
 ## Installation
+
+First. Install the [Imagemagick](http://www.imagemagick.org/script/index.php) command line tools.  
+Then  
 
 Add this line to your application's Gemfile:
 
