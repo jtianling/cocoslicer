@@ -11,6 +11,7 @@ module Cocoslicer
     end
 
     def import_from_str(str)
+      p str
       match = @@re.match(str)
       @x = match[1].to_i
       @y = match[2].to_i
@@ -26,7 +27,7 @@ module Cocoslicer
     end
 
     private
-    @@re = /\{(-?\d+),(-?\d+)\}/
+    @@re = /\{(-?\d+\.?\d?),(-?\d+\.?\d?)\}/
 
   end
 
@@ -40,6 +41,7 @@ module Cocoslicer
     end
 
     def import_from_str(str)
+      p str
       match = @@re.match(str)
       @width = match[1].to_i
       @height = match[2].to_i
@@ -92,7 +94,7 @@ module Cocoslicer
   end
 
   class ImageInfo
-    attr_accessor :name, :frame, :offset, :rotated, :source_color_rect, :source_size
+    attr_accessor :name, :frame, :offset, :rotated, :source_size
 
     def slice_img(tex_name)
       cmd = "convert #{tex_name} -crop " + frame.to_cmd_str(@rotated) 
@@ -128,7 +130,7 @@ module Cocoslicer
     end
 
     def to_s
-      return "name=#{@name},frame=#{@frame},offset=#{@offset},rotated=#{@rotated},source_color_rect=#{@source_color_rect},source_size=#{@source_size}"
+      return "name=#{@name},frame=#{@frame},offset=#{@offset},rotated=#{@rotated},source_size=#{@source_size}"
     end
   end
 
@@ -172,17 +174,15 @@ module Cocoslicer
       exit
     end
 
-    infos = []
     frames.each { |key, value|
       puts "#{key} => #{value}"
       info = ImageInfo.new
       info.name = path + key
 
-      info.frame = Rect.new.import_from_str(value['frame'])
-      info.offset = Point.new.import_from_str(value['offset'])
-      info.rotated = value['rotated']
-      info.source_color_rect = Rect.new.import_from_str(value['sourceColorRect'])
-      info.source_size = Size.new.import_from_str(value['sourceSize'])
+      info.source_size = Size.new.import_from_str(value['spriteSourceSize'])
+      info.frame = Rect.new.import_from_str(value['textureRect'])
+      info.offset = Point.new.import_from_str(value['spriteOffset'])
+      info.rotated = value['textureRotated']
 
       puts info
 
